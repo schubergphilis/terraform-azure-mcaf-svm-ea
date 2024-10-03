@@ -1,41 +1,21 @@
-variable "subscription_type" {
-  description = "The type of subscription to create"
-  type        = string
-
-  validation {
-    condition     = contains(["CSP", "MCA"], var.subscription_type)
-    error_message = "The subscription type must be either 'CSP' or 'EA'."
-  }
-}
-
 variable "billing_account_name" {
   description = "The name of the billing account"
   type        = string
-  default     = null
 }
 
 variable "billing_profile_name" {
   description = "The name of the billing profile"
   type        = string
-  default     = null
 }
 
 variable "invoice_section_name" {
   description = "The name of the invoice section"
   type        = string
-  default     = null
 }
 
 variable "parent_management_group_name" {
   description = "The name of the parent management group"
   type        = string
-  default     = null
-}
-
-variable "tenant_id" {
-  description = "The ID of the tenant"
-  type        = string
-  default     = null
 }
 
 variable "tags" {
@@ -46,7 +26,6 @@ variable "tags" {
 variable "subscription_owner_id" {
   description = "The ID of the subscription owner"
   type        = string
-  default     = null
 }
 
 variable "subscription" {
@@ -67,7 +46,7 @@ The subscription configuration. The workload is set to 'Production' by default.
 
   Example Inputs:
 
-  ```hcl
+```hcl
   sub1 = {
     subscription_name = "Subscription1"
     subscription_owner_id = "00000000-0000-0000-0000-000000000000"
@@ -75,7 +54,7 @@ The subscription configuration. The workload is set to 'Production' by default.
       Environment = "application1"
     }
   }
-  ```hcl
+```hcl
 
 DESCRIPTION
 
