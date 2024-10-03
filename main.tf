@@ -1,5 +1,3 @@
-# EA Subscription
-
 data "azurerm_client_config" "current" {}
 
 data "azurerm_billing_mca_account_scope" "this" {
@@ -33,37 +31,3 @@ resource "azapi_resource" "this" {
     }
   }
 }
-
-# CSP Subscription
-
-# resource "restful_operation" "subscription" {
-#   # Run for environments with:
-#   # 1. Empty `subscription_id` and `subscription_vending_enabled` set to true
-#   # 2. Missing `subscription_id` and `subscription_vending_enabled` set to true
-#   for_each = { for k, v in var.environments : k => v if(try(v.subscription_id, "") == "" && try(v.subscription_vending_enabled, true) == true) }
-
-#   path   = "/api/create-subscription"
-#   method = "POST"
-
-#   body = {
-#     SubscriptionName = "${each.key}-${var.workload_name}-sub"
-#     SkuId            = try(each.value.subscription_sku, "0001")
-#   }
-
-#   poll = {
-#     url_locator       = "header.Location"
-#     status_locator    = "code"
-#     default_delay_sec = 15
-#     status = {
-#       success = "200"
-#       pending = ["202"]
-#     }
-#   }
-# }
-
-# data "restful_resource" "subscription_metadata" {
-#   for_each = { for k, v in var.environments : k => v if(try(v.subscription_id, "") == "" && try(v.subscription_vending_enabled, true) == true) }
-
-#   id     = "/api/create-subscription/${restful_operation.subscription[each.key].output}"
-#   method = "GET"
-# }
