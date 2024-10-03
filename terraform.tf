@@ -10,9 +10,5 @@ terraform {
       source  = "azure/azapi"
       version = "1.15.0"
     }
-    # restful = {
-    #   source  = "magodo/restful"
-    #   version = "0.14.0"
-    # }
   }
 }
