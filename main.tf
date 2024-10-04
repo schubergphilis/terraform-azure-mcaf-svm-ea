@@ -27,7 +27,7 @@ resource "azapi_resource" "this" {
     }
     billingScope = data.azurerm_billing_mca_account_scope.this.id
     displayName  = each.value.subscription_name
-    workload     = each.value.workload
+    workload     = each.value.sku
     }
   }
 }

@@ -33,16 +33,16 @@ variable "subscription" {
     subscription_name     = optional(string)
     subscription_owner_id = optional(string)
     tags                  = optional(map(string))
-    workload              = optional(string, "Production")
+    sku                   = optional(string, "Production")
   }))
   nullable    = false
   description = <<DESCRIPTION
-The subscription configuration. The workload is set to 'Production' by default.
+The subscription configuration. The sku is set to 'Production' by default.
 
 - `subscription_name` = optional(string) - The name of the subscription to manage.
 - `subscription_owner_id` = optional(string) - The ID of the subscription owner.
 - `tags` = optional(map(string)) - The tags to apply to the subscription.
-- `workload` = optional(string) - The workload of the subscription. Defaults to 'Production'.
+- `sku` = optional(string) - The sku of the subscription. Defaults to 'Production'.
 
   Example Inputs:
 
@@ -59,7 +59,7 @@ The subscription configuration. The workload is set to 'Production' by default.
 DESCRIPTION
 
   validation {
-    condition     = alltrue([for s in var.subscription : contains(["Production", "DevTest"], s.workload)])
-    error_message = "The workload must be either 'Production' or 'DevTest'."
+    condition     = alltrue([for s in var.subscription : contains(["Production", "DevTest"], s.sku)])
+    error_message = "The sku must be either 'Production' or 'DevTest'."
   }
 }
