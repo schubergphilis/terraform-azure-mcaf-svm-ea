@@ -1,4 +1,4 @@
-# terraform-azure-mcaf-subscription-management-ea
+# terraform-azure-mcaf-svm-ea
 This terraform module will be able to manage subscriptions for Enterprise Agreements.
 
 ## Find billing account information within Enterprise Agreement.
